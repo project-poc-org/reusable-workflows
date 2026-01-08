@@ -5,8 +5,13 @@ permissions:
   pull-requests: write
 
 on:
-  push:
-    branches: [ main ]
+  workflow_call:
+    inputs:
+      release-type:
+        description: 'Release type (major, minor, patch, alpha, beta, rc, auto)'
+        required: false
+        type: string
+        default: 'auto'
   workflow_dispatch:
     inputs:
       release-type:
